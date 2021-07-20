@@ -16,8 +16,7 @@ func isValidRedditLink(url string) bool {
 	return redditRegExp.MatchString(url)
 }
 
-// given a reddit URL that conforms to the response type in response.go, it fetches the
-// video URL specified in the fallback_url of the JSON response
+// fetches the json information from the given URL. must conform to Response.go
 func fetchMediaURL(url string) (string, error) {
 	client := http.Client{
 		Transport:     nil,
@@ -61,7 +60,7 @@ func fetchMediaURL(url string) (string, error) {
 	return videoURL, nil
 }
 
-// takes a v.reddit url and transforms it to a URL to use for audio MediaBot requests
+// takes a `v.reddit` url and transforms it to a URL to use for audio MediaBot requests
 func deriveAudioURL(url string) (string, error) {
 	simplifiedURL := strings.Split(url, "?")
 	baseURL := simplifiedURL[0]

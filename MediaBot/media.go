@@ -28,7 +28,7 @@ func Compress(file, out string) (string, error) {
 	return out, err
 }
 
-// DownloadMedia downloads the MediaBot at the specified URL to the specified path
+// DownloadMedia downloads the media at the specified URL to the specified path
 func DownloadMedia(url, savePath string) error {
 	resp, err := http.Get(url)
 	defer resp.Body.Close()

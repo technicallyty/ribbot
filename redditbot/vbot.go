@@ -18,16 +18,16 @@ type Vbot struct {
 	resourceURL  string
 }
 
-func checkDirExists(path string) bool {
-	dir, err := os.Stat(path)
-	if err != nil {
-		return false
-	}
-	if !dir.IsDir() {
-		return false
-	}
-	return true
-}
+//func checkDirExists(path string) bool {
+//	dir, err := os.Stat(path)
+//	if err != nil {
+//		return false
+//	}
+//	if !dir.IsDir() {
+//		return false
+//	}
+//	return true
+//}
 
 func NewVidBot(resourceURL string) Vbot {
 	v := Vbot{

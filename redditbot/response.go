@@ -1,5 +1,6 @@
 package redditbot
 
+// Response is the structure returned from a reddit https request
 type Response []struct {
 	Kind string `json:"kind"`
 	Data struct {
