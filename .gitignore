@@ -10,7 +10,7 @@
 # private files
 private[.-]*
 private
-.ENV
+.env
 
 # Build
 vendor

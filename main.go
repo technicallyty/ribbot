@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/andersfylling/disgord"
 	"github.com/andersfylling/disgord/std"
+	"github.com/joho/godotenv"
 	"github.com/technicallyty/vidbot/redditbot"
 	"os"
 	"strings"
@@ -99,9 +100,10 @@ func handleMsg(s disgord.Session, data *disgord.MessageCreate) {
 const prefix = "r/"
 
 func main() {
+
 	client := disgord.New(disgord.Config{
 		ProjectName: "ribbot",
-		BotToken:    "ODY1MDYwMzgyOTk3NjEwNTA3.YO-gQw.mZSJmD_AMMlmjQzeEX9VXZ8ihac",
+		BotToken:    getEnvToken(),
 		Logger:      log,
 		RejectEvents: []string{
 			// rarely used, and causes unnecessary spam
@@ -144,4 +146,12 @@ func main() {
 	client.Gateway().BotReady(func() {
 		log.Info("Bot is ready!")
 	})
+}
+
+func getEnvToken() string {
+	err := godotenv.Load(".env")
+	if err != nil {
+		panic(err)
+	}
+	return os.Getenv("DISCORD_TOKEN")
 }
